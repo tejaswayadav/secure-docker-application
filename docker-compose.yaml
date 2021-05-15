@@ -1,0 +1,26 @@
+version: "3"
+
+services:
+  secure-docker-application:
+    image: tejaswayadav/secure-docker-application:001
+    networks:
+      - acms-network
+    ports:
+      - 8080
+    depends_on:
+      - acms
+
+  acms:
+    image: mysql:8
+    networks:
+      - acms-network
+    ports:
+    - 3306
+    volumes:
+    - //home/tejaswayadav/Development/MySQL/acmsdbdata:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWOD=1634225
+      - MYSQL_DATABASE=acmsdb
+
+networks:
+  acms-network:
