@@ -1,5 +1,5 @@
 BUILD:
-	docker image build -t tejaswayadav/secure-docker-application:ouath1.0 .
+	docker image build -t tejaswayadav/secure-docker-application:oauth .
 
 PUSH:
-	docker image push tejaswayadav/secure-docker-application:ouath1.0
+	docker image push tejaswayadav/secure-docker-application:oauth

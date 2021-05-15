@@ -2,7 +2,7 @@ version: "3"
 
 services:
   secure-docker-application:
-    image: tejaswayadav/secure-docker-application:oauth1.0
+    image: tejaswayadav/secure-docker-application:oauth
     networks:
       - sda-network
     depends_on:
@@ -18,10 +18,10 @@ services:
     ports:
       - 3306
     volumes:
-      - securedbdata:/var/lib/mysql
+      - //home/tejaswayadav/Development/MySQL/securedbdata:/var/lib/mysql
     environment:
       - MYSQL_ROOT_PASSWORD=1634225
       - MYSQL_DATABASE=securedb
 
-  networks:
-    sda-network
+networks:
+  sda-network:
