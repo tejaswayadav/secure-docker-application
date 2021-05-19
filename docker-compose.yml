@@ -12,16 +12,17 @@ services:
 
 
   database:
-    image: mysql:8
+    image: postgres:12-alpine
     networks:
       - sda-network
     ports:
-      - 3306
+      - 5432
     volumes:
-      - //home/tejaswayadav/Development/MySQL/securedbdata:/var/lib/mysql
+      - //home/tejaswayadav/Development/PostgresSQL/securedbdata:/var/lib/postgres
     environment:
-      - MYSQL_ROOT_PASSWORD=1634225
-      - MYSQL_DATABASE=securedb
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=1634225
+      - POSTGRES_DATABASE=securedb
 
 networks:
   sda-network:

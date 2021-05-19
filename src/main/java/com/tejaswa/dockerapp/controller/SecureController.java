@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
+
 @RestController
 @RequestMapping(value = "/v1/secure")
 public class SecureController {
@@ -18,14 +20,24 @@ public class SecureController {
         this.secureService = secureService;
     }
 
+    @GetMapping("/")
+    public String welcomePage() {
+        return "<h1>Welcome to our page</h1>";
+    }
+
+    @GetMapping("/contact")
+    public String getContactDetails() {
+        return "Contact No. : 7828171903";
+    }
+
     @GetMapping("/student/{studentId}")
-    @PreAuthorize("hasAuthority('student:read')")
+    @PreAuthorize("hasAuthority('STUDENT')")
     public Student getStudentById(@PathVariable Long studentId) {
         return secureService.getStudentById(studentId);
     }
 
     @PostMapping("/student/create")
-    @PreAuthorize("hasAuthority('student:write')")
+    @PreAuthorize("hasAuthority('STUDENT')")
     public Student createStudent(@RequestBody Student student) {
         return secureService.createStudent(student);
     }
